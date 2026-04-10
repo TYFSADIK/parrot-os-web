@@ -3,6 +3,6 @@ const nextConfig = {
   output: 'export',
   trailingSlash: true,
   images: { unoptimized: true },
-  basePath: '',
+  basePath: process.env.NODE_ENV === 'production' ? '/parrot-os-web' : '',
 }
 module.exports = nextConfig
