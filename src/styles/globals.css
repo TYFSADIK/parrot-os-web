@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: 'Ubuntu', sans-serif;
+  background-color: #1a1a2e;
+  color: #e0e0e0;
+  user-select: none;
+}
+
+#__next {
+  height: 100%;
+  width: 100%;
+}
+
+/* Terminal specific styles */
+.terminal-font {
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d0d0d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00d4aa44;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00d4aa88;
+}
+
+/* Window dragging - prevent text selection */
+.dragging {
+  user-select: none;
+  cursor: move !important;
+}
+
+/* Resize cursor helpers */
+.resize-n { cursor: n-resize; }
+.resize-s { cursor: s-resize; }
+.resize-e { cursor: e-resize; }
+.resize-w { cursor: w-resize; }
+.resize-ne { cursor: ne-resize; }
+.resize-nw { cursor: nw-resize; }
+.resize-se { cursor: se-resize; }
+.resize-sw { cursor: sw-resize; }
+
+/* Blink animation for terminal cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Boot screen animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes progressFill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+@keyframes matrixRain {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px #00d4aa44; }
+  50% { box-shadow: 0 0 20px #00d4aa88, 0 0 40px #00d4aa44; }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.slide-in {
+  animation: slideIn 0.2s ease-out;
+}
+
+/* Window styles */
+.window-shadow {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(0, 212, 170, 0.1);
+}
+
+.window-active {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(0, 212, 170, 0.3);
+}
+
+/* Panel glassmorphism */
+.panel-glass {
+  background: rgba(22, 33, 62, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Context menu */
+.context-menu {
+  animation: slideIn 0.15s ease-out;
+}
+
+/* Achievement toast */
+@keyframes toastSlide {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes toastExit {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
+
+.toast-enter {
+  animation: toastSlide 0.3s ease-out;
+}
+
+.toast-exit {
+  animation: toastExit 0.3s ease-in;
+}
+
+/* Desktop icon hover */
+.desktop-icon:hover .icon-label {
+  background: rgba(0, 212, 170, 0.2);
+}
+
+/* File manager styles */
+.file-item {
+  transition: background 0.15s ease;
+}
+
+.file-item:hover {
+  background: rgba(0, 212, 170, 0.1);
+}
+
+.file-item.selected {
+  background: rgba(0, 212, 170, 0.2);
+  border: 1px solid rgba(0, 212, 170, 0.4);
+}
+
+/* System info bars */
+.progress-bar-fill {
+  transition: width 1s ease-in-out;
+}
+
+/* Text editor */
+.line-number {
+  color: #444;
+  user-select: none;
+  min-width: 3rem;
+  text-align: right;
+  padding-right: 1rem;
+  border-right: 1px solid #222;
+}
+
+/* Syntax highlighting */
+.sh-keyword { color: #569cd6; }
+.sh-string { color: #ce9178; }
+.sh-comment { color: #6a9955; }
+.sh-variable { color: #9cdcfe; }
+.py-keyword { color: #c586c0; }
+.py-string { color: #ce9178; }
+.py-comment { color: #6a9955; }
+.py-builtin { color: #4ec9b0; }
+.md-heading { color: #569cd6; font-weight: bold; }
+.md-bold { color: #ce9178; font-weight: bold; }
+.md-code { color: #ce9178; background: #1e1e1e; }
+
+/* Lesson module styles */
+.lesson-card {
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.lesson-card:hover {
+  border-color: rgba(0, 212, 170, 0.3);
+  transform: translateY(-2px);
+}
+
+.lesson-card.completed {
+  border-color: rgba(0, 212, 170, 0.5);
+}
+
+/* Wallpaper animation */
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.rotate-slow {
+  animation: rotateSlow 60s linear infinite;
+}
+
+/* Boot messages */
+.boot-message {
+  animation: slideIn 0.1s ease-out;
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid #00d4aa;
+  outline-offset: 2px;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(0, 212, 170, 0.3);
+  color: #fff;
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #2a2a4a, transparent);
+}
+
+/* Glow effect */
+.glow-accent {
+  text-shadow: 0 0 10px #00d4aa88;
+}
+
+/* Neofetch colors */
+.nf-red { color: #ff4444; }
+.nf-green { color: #44ff44; }
+.nf-yellow { color: #ffff44; }
+.nf-blue { color: #4444ff; }
+.nf-magenta { color: #ff44ff; }
+.nf-cyan { color: #00d4aa; }
+.nf-white { color: #ffffff; }
+.nf-bright { font-weight: bold; }

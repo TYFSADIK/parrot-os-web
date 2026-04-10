@@ -1,0 +1,45 @@
+{
+  "app/page.tsx -> @/components/desktop/Desktop": {
+    "id": 2137,
+    "files": [
+      "static/chunks/151.90a0db3b6d30b27d.js",
+      "static/chunks/137.4ebda7aa185510b9.js"
+    ]
+  },
+  "components/windows/WindowManager.tsx -> @/components/apps/About": {
+    "id": 8,
+    "files": [
+      "static/chunks/8.cbf8d5370192e16c.js"
+    ]
+  },
+  "components/windows/WindowManager.tsx -> @/components/apps/FileManager": {
+    "id": 5646,
+    "files": [
+      "static/chunks/646.4cef44c49dc5a214.js"
+    ]
+  },
+  "components/windows/WindowManager.tsx -> @/components/apps/Lessons": {
+    "id": 228,
+    "files": [
+      "static/chunks/228.2e37c855f5d97e25.js"
+    ]
+  },
+  "components/windows/WindowManager.tsx -> @/components/apps/SystemInfo": {
+    "id": 5109,
+    "files": [
+      "static/chunks/109.39e8b7c07d6c9a44.js"
+    ]
+  },
+  "components/windows/WindowManager.tsx -> @/components/apps/Terminal/Terminal": {
+    "id": 8936,
+    "files": [
+      "static/chunks/936.1246f5cc8514661d.js"
+    ]
+  },
+  "components/windows/WindowManager.tsx -> @/components/apps/TextEditor": {
+    "id": 5497,
+    "files": [
+      "static/chunks/497.07d87a56b1f725e1.js"
+    ]
+  }
+}
