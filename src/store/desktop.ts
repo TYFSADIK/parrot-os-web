@@ -282,6 +282,7 @@ export const useDesktopStore = create<DesktopStore>()(
     }),
     {
       name: 'parrot-os-desktop',
+      version: 1,
       storage: createJSONStorage(() => {
         if (typeof window === 'undefined') return sessionStorage;
         return localStorage;
@@ -298,6 +299,23 @@ export const useDesktopStore = create<DesktopStore>()(
         visitedDirs: state.visitedDirs,
         openFiles: state.openFiles,
       }),
+      migrate: (_persistedState, _version) => {
+        // Clear stale state on version bump
+        return {};
+      },
+      merge: (persistedState, currentState) => {
+        const ps = (persistedState as Partial<typeof currentState>) ?? {};
+        return {
+          ...currentState,
+          ...ps,
+          // Always ensure arrays are valid — old persisted data may have null/wrong types
+          achievements: Array.isArray(ps.achievements) ? ps.achievements : [],
+          visitedDirs: Array.isArray(ps.visitedDirs) ? ps.visitedDirs : ['/home/parrot'],
+          terminalHistory: Array.isArray(ps.terminalHistory) ? ps.terminalHistory : [],
+          toasts: [],
+          windows: [],
+        };
+      },
     }
   )
 );
